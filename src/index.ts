@@ -12,9 +12,12 @@ const user = createUser(
 );
 
 const sendTweet = () => {
-  requests.getLatestCurrencyRate().then(latestRate => {
-    user.v1.tweet(`1 USD = ${latestRate} TRY`);
-  });
+  requests
+    .getLatestCurrencyRate()
+    .then(latestRate => {
+      user.v1.tweet(`1 USD = ${latestRate} TRY`);
+    })
+    .catch(err => console.error(err));
 };
 
 sendTweet();
