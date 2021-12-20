@@ -2,13 +2,14 @@
   "name": "twitter-currency-bot",
   "version": "1.0.0",
   "description": "USD to TRY currency converter bot",
-  "main": "src/index.ts",
+  "main": "dist/index.js",
   "repository": "https://github.com/mscandan/twitter-currency-bot.git",
   "author": "M. Selcuk Candan <mehmetselcukcandan@icloud.com>",
   "license": "MIT",
   "scripts": {
     "dev": "nodemon --watch",
-    "start": "ts-node src/index.ts"
+    "start": "node dist/index.js",
+    "build": "rm -rf dist && tsc --outDir dist src/index.ts"
   },
   "devDependencies": {
     "@types/axios": "^0.14.0",
@@ -28,7 +29,6 @@
   "dependencies": {
     "axios": "^0.24.0",
     "dotenv": "^10.0.0",
-    "ts-node": "^10.4.0",
     "twitter-api-v2": "^1.8.0"
   }
 }
