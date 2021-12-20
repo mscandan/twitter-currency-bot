@@ -7,7 +7,8 @@
   "author": "M. Selcuk Candan <mehmetselcukcandan@icloud.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "nodemon --watch"
+    "dev": "nodemon --watch",
+    "start": "ts-node src/index.ts"
   },
   "devDependencies": {
     "@types/axios": "^0.14.0",
@@ -27,6 +28,7 @@
   "dependencies": {
     "axios": "^0.24.0",
     "dotenv": "^10.0.0",
+    "ts-node": "^10.4.0",
     "twitter-api-v2": "^1.8.0"
   }
 }
