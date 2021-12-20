@@ -15,7 +15,11 @@ const sendTweet = () => {
   requests
     .getLatestCurrencyRate()
     .then(latestRate => {
-      user.v1.tweet(`1 USD = ${latestRate} TRY`);
+      user.v1.tweet(
+        `${new Date().toLocaleDateString('tr')} ${new Date().toLocaleTimeString(
+          'tr',
+        )} 1 USD = ${latestRate} TRY`,
+      );
     })
     .catch(err => console.error(err));
 };
