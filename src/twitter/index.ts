@@ -1,13 +1,16 @@
 import TwitterApi from 'twitter-api-v2';
 
-export const createUser = async (appKey: string, appSecret: string) => {
-  const user = new TwitterApi({ appKey: appKey, appSecret: appSecret });
-  const { oauth_token, oauth_token_secret } = await user.generateAuthLink();
-  const finalClient = new TwitterApi({
-    appKey: appKey,
-    appSecret: appSecret,
-    accessToken: oauth_token,
-    accessSecret: oauth_token_secret,
+export const createUser = (
+  apiKey: string,
+  apiKeySecret: string,
+  accessToken: string,
+  accessSecret: string,
+) => {
+  const user = new TwitterApi({
+    appKey: apiKey,
+    appSecret: apiKeySecret,
+    accessToken: accessToken,
+    accessSecret: accessSecret,
   });
-  return finalClient.v1;
+  return user;
 };

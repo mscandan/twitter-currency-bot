@@ -1,11 +1,21 @@
 import { config } from 'dotenv';
 import { createUser } from './twitter';
+import { requests } from './requests';
 
 config();
 
 const user = createUser(
   process.env.TWITTER_API_KEY ?? '',
   process.env.TWITTER_API_SECRET ?? '',
-).then(app => app.tweet('asdasd').then(res => console.log(res)));
+  process.env.TWITTER_ACCESS_TOKEN ?? '',
+  process.env.TWITTER_ACCESS_SECRET ?? '',
+);
 
-console.log(user);
+const sendTweet = () => {
+  requests.getLatestCurrencyRate().then(latestRate => {
+    user.v1.tweet(`1 USD = ${latestRate} TRY`);
+  });
+};
+
+sendTweet();
+setInterval(sendTweet, 30 * 60 * 1000);
